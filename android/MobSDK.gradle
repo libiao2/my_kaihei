@@ -1,0 +1,80 @@
+apply plugin: 'com.mob.sdk'
+
+MobSDK {
+    appKey "2db7019beda26"
+    appSecret "a1c3c5bc5002bdeee8accf37899c4e67"
+
+    ShareSDK {
+        // 开启闭环分享功能
+        loopShare true
+        //平台配置信息
+        devInfo {
+            QZone {
+                id 3
+                sortId 3
+                appId "101839286"
+                appKey "532f43f9d525bcbaeb9f862d06a9404c"
+                shareByAppClient true
+                bypassApproval false
+                enable true
+            }
+                  /* Wechat微信和WechatMoments微信朋友圈的appid是一样的；
+            注意：开发者不能用我们这两个平台的appid,否则分享不了
+            微信测试的时候，微信测试需要先签名打包出apk,
+            sample测试微信，要先签名打包，keystore在sample项目中，密码123456
+            BypassApproval是绕过审核的标记，设置为true后AppId将被忽略，故不经过
+            审核的应用也可以执行分享，但是仅限于分享文字和图片，不能分享其他类型，
+            默认值为false。此外，微信收藏不支持此字段。wx4868b35061f87885
+            <!--要分享微信小应用程序时用userName,path-->*/
+            Wechat {
+                id 4
+                sortId 4
+                appId "wx9e2b4c96801cc1be"
+                appSecret "fe4694fc557d2bc3c3353861cc29225c"
+                userName "gh_afb25ac019c9"
+                path "pages/index/index.html?id=1"
+                withShareTicket true
+                miniprogramType 0
+                bypassApproval false
+                enable true
+            }
+
+            WechatMoments {
+                id 5
+                sortId 5
+                appId "wx9e2b4c96801cc1be"
+                appSecret "fe4694fc557d2bc3c3353861cc29225c"
+                bypassApproval false
+                enable true
+            }
+
+            WechatFavorite {
+                id 6
+                sortId 6
+                appId "wx9e2b4c96801cc1be"
+                appSecret "fe4694fc557d2bc3c3353861cc29225c"
+                bypassApproval false
+                enable true
+            }
+
+            QQ {
+                id 7
+                sortId 7
+                appId "101839286"
+                appKey "532f43f9d525bcbaeb9f862d06a9404c"
+                shareByAppClient true
+                bypassApproval false
+                enable true
+            }
+
+            SinaWeibo {
+                id 7
+                sortId 7
+                appKey "2635574339"
+                appSecret "4d01b9dbd91dca7138ae89b33e2ae96f"
+                callbackUri "https://www.nn.com/thirdparty/callback/weibo"
+                shareByAppClient true
+            }
+        }
+    }
+}

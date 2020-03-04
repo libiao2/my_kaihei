@@ -1,0 +1,155 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+apply from: '../MobSDK.gradle'
+
+// apply plugin: 'com.mob.sdk'
+
+
+android {
+    compileSdkVersion 28
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    defaultConfig {
+        applicationId "com.nn.flutter.premades"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [TENCENT_APP_ID: "101839286"]
+
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword '1qaz2wsx'
+            storeFile file('key/nn.jks')
+            storePassword '1qaz2wsx'
+        }
+
+        debug {
+            keyAlias 'key0'
+            keyPassword '1qaz2wsx'
+            storeFile file('key/nn.jks')
+            storePassword '1qaz2wsx'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+}
+
+flutter {
+    source '../..'
+}
+
+
+// MobSDK {
+//     appKey "2db8f64406964"
+//     appSecret "f546fd9c8520b44317eca3e0153e0d99"
+//     ShareSDK {
+//         loopShare true
+//         //平台配置信息
+//         devInfo {
+//             QZone {
+//                 id 3
+//                 sortId 3
+//                 appId "101839286"
+//                 appKey "532f43f9d525bcbaeb9f862d06a9404c"
+//                 shareByAppClient true
+//                 bypassApproval false
+//                 enable true
+//             }
+
+//             QQ {
+//                 id 7
+//                 sortId 7
+//                 appId "101839286"
+//                 appKey "532f43f9d525bcbaeb9f862d06a9404c"
+//                 shareByAppClient false
+//                 bypassApproval false
+//                 enable true
+//             }
+
+//             Wechat {
+//                 id 4
+//                 sortId 4
+//                 appId "wx9e2b4c96801cc1be"
+//                 appSecret "fe4694fc557d2bc3c3353861cc29225c"
+//                 userName "gh_afb25ac019c9"
+//                 path "pages/index/index.html?id=1"
+//                 withShareTicket true
+//                 miniprogramType 0
+//                 bypassApproval false
+//                 enable true
+//             }
+
+//             WechatMoments {
+//                 id 5
+//                 sortId 5
+//                 appId "wx9e2b4c96801cc1be"
+//                 appSecret "fe4694fc557d2bc3c3353861cc29225c"
+//                 bypassApproval false
+//                 enable true
+//             }
+//         }
+//     }
+// }
+
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //悬浮窗
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+}

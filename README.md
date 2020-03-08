@@ -1,16 +1,11 @@
 # premades_nn
 
-A new Flutter project.
+一个新的Flutter项目。
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+项目预览：
+![image](https://github.com/libiao2/my_kaihei/blob/master/images/%E9%A2%91%E9%81%93-%E4%B8%B4%E6%97%B6%E9%A2%91%E9%81%93%E6%82%AC%E6%B5%AE%E6%A1%86.png)
+![image](https://github.com/libiao2/my_kaihei/blob/master/images/WechatIMG1.jpeg)
+![image](https://github.com/libiao2/my_kaihei/blob/master/images/WechatIMG2.jpeg)
+![image](https://github.com/libiao2/my_kaihei/blob/master/images/WechatIMG3.jpeg)
+![image](https://github.com/libiao2/my_kaihei/blob/master/images/WechatIMG5.jpeg)
+![image](https://github.com/libiao2/my_kaihei/blob/master/images/WechatIMG6.jpeg)
